@@ -8,7 +8,7 @@ use TCG\Voyager\Models\DataType;
 use TCG\Voyager\Models\Menu;
 use TCG\Voyager\Models\MenuItem;
 use TCG\Voyager\Models\Permission;
-use TCG\Voyager\Models\Post;
+use App\Models\Post;
 
 class PostsTableSeeder extends Seeder
 {
@@ -25,7 +25,7 @@ class PostsTableSeeder extends Seeder
                 'display_name_singular' => __('voyager::seeders.data_types.post.singular'),
                 'display_name_plural'   => __('voyager::seeders.data_types.post.plural'),
                 'icon'                  => 'voyager-news',
-                'model_name'            => 'TCG\\Voyager\\Models\\Post',
+                'model_name'            => 'App\\Models\\Post',
                 'policy_name'           => 'TCG\\Voyager\\Policies\\PostPolicy',
                 'controller'            => '',
                 'generate_permissions'  => 1,
@@ -65,20 +65,6 @@ class PostsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($postDataType, 'category_id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.category'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => 3,
-            ])->save();
-        }
 
         $dataRow = $this->dataRow($postDataType, 'title');
         if (!$dataRow->exists) {

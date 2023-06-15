@@ -521,6 +521,7 @@ RESPONSIVE
 }
  .post .post-img > img {
      width: 100%;
+     aspect-ratio: 2;
 }
  .post .post-meta {
      margin-top: 15px;
@@ -542,6 +543,10 @@ RESPONSIVE
      text-decoration: none;
      opacity: 0.9;
 }
+ .mce-content-body img{
+     max-width: 100%;
+     height: auto;
+ }
  .post-meta .post-category.cat-1 {
      background-color: #4BB92F;
 }

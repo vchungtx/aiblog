@@ -12,11 +12,13 @@
             <!-- post -->
             <div class="col-md-6">
                 <div class="post post-thumb">
-                    <a class="post-img" href="/ai-news/{{$featurePost->slug}}"><img src="/storage/{{$featurePost->image}}" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
+                    <a class="post-img" href="/ai-news/{{$featurePost->slug}}"><img src="@if( !filter_var($featurePost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $featurePost->image ) }}@else{{ $featurePost->image }}@endif" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
                     <div class="post-body">
                         <div class="post-meta">
                             @foreach ($featurePost->categories as $category)
+                            @if($loop->index < 3)
                             <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                            @endif
                             @endforeach
                             <span class="post-date">{{ date('d/m/Y', strtotime($featurePost->created_at))}} </span>
                         </div>
@@ -43,11 +45,13 @@
             <!-- post -->
             <div class="col-md-4">
                 <div class="post">
-                    <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="/storage/{{$recentPost->image}}" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
+                    <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
                     <div class="post-body">
                         <div class="post-meta">
                             @foreach ($recentPost->categories as $category)
+                            @if($loop->index < 3)
                             <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                            @endif
                             @endforeach
                             <span class="post-date">{{ date('d/m/Y', strtotime($recentPost->created_at))}}</span>
                         </div>
@@ -73,11 +77,13 @@
                     <!-- post -->
                     <div class="col-md-12">
                         <div class="post post-thumb">
-                            <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="/storage/{{$recentPost->image}}" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
+                            <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
                                     @foreach ($recentPost->categories as $category)
+                                    @if($loop->index < 3)
                                     <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                                    @endif
                                     @endforeach
                                     <span class="post-date">{{ date('d/m/Y', strtotime($recentPost->created_at))}} </span>
                                 </div>
@@ -90,12 +96,14 @@
                     <!-- post -->
                     <div class="col-md-6">
                         <div class="post">
-                            <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="/storage/{{$recentPost->image}}" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
+                            <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
 
                                     @foreach ($recentPost->categories as $category)
+                                    @if($loop->index < 3)
                                     <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                                    @endif
                                     @endforeach
                                     <span class="post-date">{{ date('d/m/Y', strtotime($recentPost->created_at))}}  </span>
                                 </div>
@@ -140,11 +148,13 @@
             <!-- post -->
             <div class="col-md-4">
                 <div class="post">
-                    <a class="post-img" href="/ai-news/{{$featurePost->slug}}"><img src="/storage/{{$featurePost->image}}" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
+                    <a class="post-img" href="/ai-news/{{$featurePost->slug}}"><img src="@if( !filter_var($featurePost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $featurePost->image ) }}@else{{ $featurePost->image }}@endif" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
                     <div class="post-body">
                         <div class="post-meta">
                             @foreach ($featurePost->categories as $category)
+                            @if($loop->index < 3)
                             <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                            @endif
                             @endforeach
                             <span class="post-date">{{ date('d/m/Y', strtotime($featurePost->created_at))}} </span>
                         </div>
@@ -180,11 +190,13 @@
                     <!-- post -->
                     <div class="col-md-12">
                         <div class="post post-row">
-                            <a class="post-img" href="/ai-news/{{$mostReadPost->slug}}"><img src="/storage/{{$mostReadPost->image}}" alt="{{$mostReadPost->title}}" title="{{$mostReadPost->title}}"></a>
+                            <a class="post-img" href="/ai-news/{{$mostReadPost->slug}}"><img src="@if( !filter_var($mostReadPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $mostReadPost->image ) }}@else{{ $mostReadPost->image }}@endif" alt="{{$mostReadPost->title}}" title="{{$mostReadPost->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
                                     @foreach ($mostReadPost->categories as $category)
+                                    @if($loop->index < 3)
                                     <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                                    @endif
                                     @endforeach
                                     <span class="post-date">{{ date('d/m/Y', strtotime($mostReadPost->created_at))}} </span>
                                 </div>

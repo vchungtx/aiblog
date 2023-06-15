@@ -521,7 +521,8 @@ RESPONSIVE
 }
  .post .post-img > img {
      width: 100%;
-     aspect-ratio: 2;
+     aspect-ratio: 1.5;
+     object-fit: cover;
 }
  .post .post-meta {
      margin-top: 15px;

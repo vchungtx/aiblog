@@ -15,7 +15,7 @@ class PostController extends Controller
         $post = Post::where('slug', $slug)->first();
         $categories = Category::all();
         $featurePosts = Post::published()->where('featured', 1)->orderBy('created_at', 'desc')->limit(3)->get();
-        $mostReadPosts = Post::published()->orderBy('reads', 'desc')->limit(4)->get();
+        $mostReadPosts = Post::published()->orderBy('read_count', 'desc')->limit(4)->get();
         return view('blog-post')->with('post', $post)->with('featurePosts', $featurePosts)->with('mostReadPosts', $mostReadPosts)
             ->with('categories', $categories);
     }
@@ -26,7 +26,7 @@ class PostController extends Controller
         $posts = $category->posts()->limit(10)->get();
         $categories = Category::all();
         $featurePosts = Post::published()->where('featured', 1)->orderBy('created_at', 'desc')->limit(3)->get();
-        $mostReadPosts = Post::published()->orderBy('reads', 'desc')->limit(4)->get();
+        $mostReadPosts = Post::published()->orderBy('read_count', 'desc')->limit(4)->get();
         return view('category')->with('posts', $posts)->with('category', $category)->with('featurePosts', $featurePosts)->with('mostReadPosts', $mostReadPosts)
             ->with('categories', $categories);
     }

@@ -27,9 +27,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         <div class="footer-widget">
                             <h3 class="footer-title">About Us</h3>
                             <ul class="footer-links">
-                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="#">About Us</a></li>
                                 <li><a href="#">Join Us</a></li>
-                                <li><a href="contact.html">Contacts</a></li>
+                                <li><a href="#">Contacts</a></li>
                             </ul>
                         </div>
                     </div>
@@ -37,10 +37,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         <div class="footer-widget">
                             <h3 class="footer-title">Catagories</h3>
                             <ul class="footer-links">
-                                <li><a href="category.html">Web Design</a></li>
-                                <li><a href="category.html">JavaScript</a></li>
-                                <li><a href="category.html">Css</a></li>
-                                <li><a href="category.html">Jquery</a></li>
+                                <li><a href="#">Web Design</a></li>
+                                <li><a href="#">JavaScript</a></li>
+                                <li><a href="#">Css</a></li>
+                                <li><a href="#">Jquery</a></li>
                             </ul>
                         </div>
                     </div>

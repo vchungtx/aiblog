@@ -6,7 +6,7 @@
 @section('page-header')
 <!-- Page Header -->
 <div id="post-header" class="page-header">
-    <div class="background-img" style="background-image: url('/storage/{{$post->image}}');"></div>
+    <div class="background-img" style="background-image: url('@if( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif');"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-10">

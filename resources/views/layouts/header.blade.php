@@ -11,16 +11,7 @@
                 </div>
                 <!-- /logo -->
 
-                <!-- nav -->
-                <ul class="nav-menu nav navbar-nav">
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Popular</a></li>
-                    <li class="cat-1"><a href="#">Web Design</a></li>
-                    <li class="cat-2"><a href="#">JavaScript</a></li>
-                    <li class="cat-3"><a href="#">Css</a></li>
-                    <li class="cat-4"><a href="#">Jquery</a></li>
-                </ul>
-                <!-- /nav -->
+                {{menu('main_menu', 'layouts.main_menu')}}
 
                 <!-- search & aside toggle -->
                 <div class="nav-btns">
@@ -38,17 +29,7 @@
 
         <!-- Aside Nav -->
         <div id="nav-aside">
-            <!-- nav -->
-            <div class="section-row">
-                <ul class="nav-aside-menu">
-                    <li><a href="resources/views/index.blade.php">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Join Us</a></li>
-                    <li><a href="#">Advertisement</a></li>
-                    <li><a href="contact.html">Contacts</a></li>
-                </ul>
-            </div>
-            <!-- /nav -->
+            {{menu('side_menu', 'layouts.aside_menu')}}
 
 
 

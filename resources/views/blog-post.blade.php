@@ -40,10 +40,6 @@
 
                 </div>
 
-                <!-- ad -->
-                @include('layouts.center-ad')
-                <!-- ad -->
-
                 <!-- author -->
                 <div class="section-row">
                     <div class="post-author">
@@ -55,7 +51,7 @@
                                 <div class="media-heading">
                                     <h3>{{$post->authorId->name}}</h3>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p>{{$post->authorId->title}}</p>
                                 <ul class="author-social">
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>

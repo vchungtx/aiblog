@@ -708,10 +708,10 @@ RESPONSIVE
 	author
 \*----------------------------*/
  .post-author .media .media-left {
-     padding-right: 40px;
+     padding-right: 15px;
 }
  .post-author .media .media-left .media-object {
-     width:120px;
+     width:70px;
      border-radius: 50%;
 }
  .post-author .author-social {
@@ -957,6 +957,15 @@ RESPONSIVE
      color: #FFF;
      opacity: 0.9;
 }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li a {
+    padding: 15px 20px;
+}
+
 /*=========================================================
 	RESPONSIVE
 ===========================================================*/

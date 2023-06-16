@@ -10,7 +10,6 @@
         @yield('head')
         <!-- Favicon Icon -->
         <link rel="icon" type="image/png" href="{{ URL::asset('/img/favicon.ico') }}" />
-
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet">
 

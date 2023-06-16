@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PromptController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -19,6 +20,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/ai-news/{slug}', [PostController::class, 'index']);
 Route::get('/ai-news/category/{slug}', [PostController::class, 'searchByCategory']);
 Route::post('/ai-news/category/{slug}/load-more', [PostController::class ,'loadMorePostsByCategory']);
+Route::get('/midjourney/category/{slug}', [PromptController::class, 'searchByCategory']);
+Route::post('/midjourney/category/{slug}/load-more', [PromptController::class ,'loadMorePromptsByCategory']);
+Route::get('/midjourney/', [PromptController::class, 'index']);
+Route::post('/midjourney/load-more', [PromptController::class ,'loadMorePrompts']);
 Route::middleware('auth')->group(function () {
     Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::post('/logout', [HomeController::class, 'logout'])->name('logout');

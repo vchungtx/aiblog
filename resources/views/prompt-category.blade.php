@@ -7,6 +7,7 @@
             <div class="col-md-10">
                 <ul class="page-header-breadcrumb">
                     <li><a href="/">Home</a></li>
+                    <li><a href="/midjourney">MidJourney</a></li>
                     <li>{{$category->name}}</li>
                 </ul>
                 <h1>{{$category->name}}</h1>

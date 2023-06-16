@@ -63,101 +63,88 @@
                     </div>
                 </div>
                 <!-- /author -->
-
-                <!-- comments -->
-                <div class="section-row">
-                    <div class="section-title">
-                        <h2>3 Comments</h2>
-                    </div>
-
-                    <div class="post-comments">
-                        <!-- comment -->
-                        <div class="media">
-                            <div class="media-left">
-                                <img class="media-object" src="/img/avatar.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <div class="media-heading">
-                                    <h4>John Doe</h4>
-                                    <span class="time">March 27, 2018 at 8:00 am</span>
-                                    <a href="#" class="reply">Reply</a>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                                <!-- comment -->
-                                <div class="media">
-                                    <div class="media-left">
-                                        <img class="media-object" src="/img/avatar.png" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="media-heading">
-                                            <h4>John Doe</h4>
-                                            <span class="time">March 27, 2018 at 8:00 am</span>
-                                            <a href="#" class="reply">Reply</a>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                    </div>
-                                </div>
-                                <!-- /comment -->
-                            </div>
-                        </div>
-                        <!-- /comment -->
-
-                        <!-- comment -->
-                        <div class="media">
-                            <div class="media-left">
-                                <img class="media-object" src="/img/avatar.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <div class="media-heading">
-                                    <h4>John Doe</h4>
-                                    <span class="time">March 27, 2018 at 8:00 am</span>
-                                    <a href="#" class="reply">Reply</a>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            </div>
-                        </div>
-                        <!-- /comment -->
-                    </div>
-                </div>
-                <!-- /comments -->
-
                 <!-- reply -->
+                @auth
                 <div class="section-row">
                     <div class="section-title">
-                        <h2>Leave a reply</h2>
-                        <p>your email address will not be published. required fields are marked *</p>
+                        <h2>Leave a comment</h2>
                     </div>
-                    <form class="post-reply">
+                    <form class="post-reply" action="{{ route('comments.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="post_id" value="{{ $post->id }}">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <span>Name *</span>
-                                    <input class="input" type="text" name="name">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <span>Email *</span>
-                                    <input class="input" type="email" name="email">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <span>Website</span>
-                                    <input class="input" type="text" name="website">
-                                </div>
-                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea class="input" name="message" placeholder="Message"></textarea>
+                                    <textarea class="input" name="content" placeholder="Message"></textarea>
                                 </div>
-                                <button class="primary-button">Submit</button>
+                                <button class="primary-button" type="submit">Submit</button>
                             </div>
                         </div>
                     </form>
                 </div>
+                @endauth
                 <!-- /reply -->
+
+                <!-- comments -->
+                <div class="section-row">
+                    <div class="section-title">
+                        <h2>{{count($post->comments)}} Comments</h2>
+                    </div>
+
+                    <div class="post-comments">
+                        <!-- comment -->
+                        @foreach($post->comments as $comment)
+                        <div class="media">
+                            <div class="media-left">
+                                <img class="media-object" src="@if( !filter_var($comment->userId->avatar, FILTER_VALIDATE_URL)){{ Voyager::image( $comment->userId->avatar ) }}@else{{ $comment->userId->avatar }}@endif" alt="">
+                            </div>
+                            <div class="media-body">
+                                <div class="media-heading">
+                                    <h4>{{$comment->userId->name}}</h4>
+                                    <span class="time">{{$comment->created_at}}</span>
+                                    <a href="#" comment-id="{{ $comment->id }}" class="reply" >Reply</a>
+                                </div>
+                                <p>{{$comment->content}}</p>
+                                <form class="post-reply"  style="display: none" action="{{ route('comments.store') }}" method="POST" id="reply-box-{{ $comment->id }}">
+                                    @csrf
+                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                    <input type="hidden" name="reply_comment_id" value="{{ $comment->id }}">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea class="input" name="content" placeholder="Message"></textarea>
+                                            </div>
+                                            <button class="primary-button" type="submit">Submit a reply</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                @foreach ($comment->replies as $reply)
+                                <!-- reply comment -->
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img class="media-object" src="@if( !filter_var($reply->userId->avatar, FILTER_VALIDATE_URL)){{ Voyager::image( $reply->userId->avatar ) }}@else{{ $reply->userId->avatar }}@endif" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="media-heading">
+                                            <h4>{{$reply->userId->name}}</h4>
+                                            <span class="time">{{$reply->created_at}}</span>
+
+                                        </div>
+                                        <p>{{$reply->content}}</p>
+                                    </div>
+                                </div>
+                                <!-- /comment -->
+                                @endforeach
+
+                            </div>
+                        </div>
+                        @endforeach
+
+                        </div>
+                </div>
+                <!-- /comments -->
+
+
             </div>
             <!-- /Post content -->
 
@@ -179,3 +166,14 @@
 <!-- /section -->
 @endsection
 
+@section('footer')
+<script>
+    $(document).ready(function() {
+        $('.reply').click(function() {
+            var commentId = $(this).attr('comment-id');
+            $('#reply-box-' + commentId).toggle();
+            return false;
+        });
+    });
+</script>
+@endsection

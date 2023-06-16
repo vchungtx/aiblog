@@ -753,6 +753,8 @@ RESPONSIVE
 }
  .post-comments .media .media-left .media-object {
      width:70px;
+     height: 70px;
+     object-fit: cover;
      border-radius: 50%;
 }
  .post-comments .media .media-body .media-heading h4 {

@@ -92,7 +92,7 @@
         $('.login-area').show();
         return false;
     });
-    $('.login-area').on('click', function () {
+    $('.login-box > a').on('click', function () {
         $('.login-area').hide();
         return false;
     });

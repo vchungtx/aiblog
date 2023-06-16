@@ -88,10 +88,11 @@
 
 <div class="login-area" >
     <div class="login-box">
-        <a href="#"><i class="fa fa-close"></i></a>
+        <a href="#"><i style="color: #0b0f28" class="fa fa-close"></i></a>
         <div class="col-6 col-offset-3">
             <h2 class="text-center">Login</h2>
-            <form action="/login" method="POST">
+            <form action="{{ route('voyager.login')}}" method="POST">
+                @csrf
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" id="email" name="email" required>
@@ -103,7 +104,7 @@
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
             <div class="text-center">
-                <h4>Or login with:</h4>
+                <h4 style="margin-top: 10px">Or login with:</h4>
                 <div class="btn-group">
                     <button class="btn btn-danger" onclick="loginWithGoogle()">Google</button>
                     <button class="btn btn-primary" onclick="loginWithFacebook()">Facebook</button>

@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
@@ -20,5 +21,11 @@ class HomeController extends Controller
         Log::info('end home');
         return view('index')->with('featurePosts', $featurePosts)->with('recentPosts', $recentPosts)->with('mostReadPosts', $mostReadPosts)
             ->with('categories', $categories);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
     }
 }

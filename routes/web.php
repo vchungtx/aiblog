@@ -15,12 +15,13 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/ai-news/{slug}', [PostController::class, 'index']);
 Route::get('/ai-news/category/{slug}', [PostController::class, 'searchByCategory']);
 Route::post('/ai-news/category/{slug}/load-more', [PostController::class ,'loadMorePostsByCategory']);
 Route::middleware('auth')->group(function () {
     Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::post('/logout', [HomeController::class, 'logout'])->name('logout');
 });
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

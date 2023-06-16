@@ -88,4 +88,16 @@
 
 	setStickyPos();
 
+    $('.login-popup').on('click', function () {
+        $('.login-area').show();
+        return false;
+    });
+    $('.login-area').on('click', function () {
+        $('.login-area').hide();
+        return false;
+    });
+    $('.logout').on('click', function () {
+        $('#logout-form').submit();
+        return false;
+    });
 })(jQuery);

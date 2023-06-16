@@ -269,7 +269,7 @@ RESPONSIVE
 }
  .nav-menu li a {
      position: relative;
-     padding: 25px 20px;
+     padding: 25px 15px;
      text-transform: capitalize;
      -webkit-box-shadow: -1px 0px 0px 0px #eceef2 inset;
      box-shadow: -1px 0px 0px 0px #eceef2 inset;
@@ -325,7 +325,7 @@ RESPONSIVE
      float:right;
 }
  .nav-btns > button {
-     padding: 25px 25px;
+     padding: 25px 15px;
      border: none;
      line-height: 20px;
      background: transparent;
@@ -959,7 +959,43 @@ RESPONSIVE
      color: #FFF;
      opacity: 0.9;
 }
+.login-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: none;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 99;
+    padding: 0 15px;
+}
 
+.login-box {
+    max-width: 380px;
+    background: #fff;
+    position: relative;
+    color: #03090e;
+    margin: 200px auto 0;
+    padding: 40px 25px 25px;
+}
+
+.login-box a {
+    color: #03090e;
+}
+
+.login-box > a {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 22px;
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+}
 .dropdown:hover .dropdown-menu {
     display: block;
 }

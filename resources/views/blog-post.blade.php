@@ -64,7 +64,7 @@
                 </div>
                 <!-- /author -->
                 <!-- reply -->
-                @auth
+
                 <div class="section-row">
                     <div class="section-title">
                         <h2>Leave a comment</h2>
@@ -82,7 +82,7 @@
                         </div>
                     </form>
                 </div>
-                @endauth
+
                 <!-- /reply -->
 
                 <!-- comments -->

@@ -15,6 +15,36 @@
 
                 <!-- search & aside toggle -->
                 <div class="nav-btns">
+                    @guest
+                    <button class="login-popup"><i class="fa fa-regular fa-user fa-fw"></i>Login</button>
+                    @endguest
+                    @auth
+                    @php
+                    $fullName = Auth::user()->name;
+                    $lastName = explode(' ', $fullName);
+                    $lastName = end($lastName);
+                    @endphp
+                    <button class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ $lastName }}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="#" >
+                                    Account info
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="logout" >
+                                    Logout
+                                </a>
+                            </li>
+
+                        </ul>
+                    </button>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    @endauth
                     <button class="aside-btn"><i class="fa fa-bars"></i></button>
                     <button class="search-btn"><i class="fa fa-search"></i></button>
                     <div class="search-form">
@@ -55,4 +85,31 @@
 
     @yield('page-header')
 </header>
+
+<div class="login-area" >
+    <div class="login-box">
+        <a href="#"><i class="fa fa-close"></i></a>
+        <div class="col-6 col-offset-3">
+            <h2 class="text-center">Login</h2>
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+            <div class="text-center">
+                <h4>Or login with:</h4>
+                <div class="btn-group">
+                    <button class="btn btn-danger" onclick="loginWithGoogle()">Google</button>
+                    <button class="btn btn-primary" onclick="loginWithFacebook()">Facebook</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- /Header -->

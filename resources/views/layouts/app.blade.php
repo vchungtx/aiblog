@@ -41,6 +41,30 @@
 		<script src="/js/jquery.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/main.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJlHDKMDebC_QnDUd0HaHsuZ_6fWTLhPU",
+            authDomain: "aiblog-390007.firebaseapp.com",
+            projectId: "aiblog-390007",
+            storageBucket: "aiblog-390007.appspot.com",
+            messagingSenderId: "475480300002",
+            appId: "1:475480300002:web:bf60814b7cbeb83c4501bb",
+            measurementId: "G-97N35Q094L"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+
     @yield('footer')
 	</body>
 </html>

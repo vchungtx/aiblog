@@ -41,11 +41,7 @@
                 </div>
 
                 <!-- ad -->
-                <div class="section-row text-center">
-                    <a href="#" style="display: inline-block;margin: auto;">
-                        <img class="img-responsive" src="/img/ad-2.jpg" alt="">
-                    </a>
-                </div>
+                @include('layouts.center-ad')
                 <!-- ad -->
 
                 <!-- author -->
@@ -53,11 +49,11 @@
                     <div class="post-author">
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="/img/author.png" alt="">
+                                <img class="media-object" src="@if( !filter_var($post->authorId->avatar, FILTER_VALIDATE_URL)){{ Voyager::image( $post->authorId->avatar ) }}@else{{ $post->authorId->avatar }}@endif" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="media-heading">
-                                    <h3>John Doe</h3>
+                                    <h3>{{$post->authorId->name}}</h3>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                 <ul class="author-social">

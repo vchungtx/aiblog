@@ -17,6 +17,7 @@ use App\Http\Controllers\PostController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/ai-news/{slug}', [PostController::class, 'index']);
 Route::get('/ai-news/category/{slug}', [PostController::class, 'searchByCategory']);
+Route::post('/ai-news/category/{slug}/load-more', [PostController::class ,'loadMorePostsByCategory']);
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

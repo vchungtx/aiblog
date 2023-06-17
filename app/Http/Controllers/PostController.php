@@ -17,6 +17,11 @@ class PostController extends Controller
         if ($post == null){
             abort(404);
         }
+        if (!session()->has('post_viewed_' . $post->id)) {
+            $post->increment('read_count');
+            session(['post_viewed_' . $post->id => true]);
+        }
+
         $categories = Category::all();
         $featurePosts = Post::published()->where('featured', 1)->orderBy('created_at', 'desc')->limit(3)->get();
         $mostReadPosts = Post::published()->orderBy('read_count', 'desc')->limit(4)->get();

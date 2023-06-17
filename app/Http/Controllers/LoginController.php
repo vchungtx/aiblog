@@ -14,6 +14,16 @@ class LoginController extends Controller
 {
     //
 
+
+    public function create()
+    {
+        return view('auth.login');
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
+    }
     public function redirectToGoogle()
     {
         $googleClient = new GoogleClient();

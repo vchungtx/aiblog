@@ -7,16 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Google\Client as GoogleClient;
 use Illuminate\Support\Facades\Log;
+use Laravel\Socialite\Facades\Socialite;
 use TCG\Voyager\Models\User;
 
 class LoginController extends Controller
 {
     //
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('home');
-    }
 
     public function redirectToGoogle()
     {
@@ -60,6 +56,41 @@ class LoginController extends Controller
             $user->email = $email;
             $user->avatar = $pictureUrl;
             $user->password = 'GOOGLE';
+            $user->save();
+        }
+
+        // Authenticate the user
+        Auth::login($user);
+
+        // Redirect the user to the desired page
+        return redirect()->route('home');
+
+    }
+
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function handleFacebookCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        // Retrieve user details
+        $name = $user->getName();
+        $email = $user->getEmail();
+        $avatar = $user->getAvatar();
+        $user = User::where('email', $email)->first();
+        Log::info('$name: '. $name);
+        Log::info('$email: '. $email);
+        Log::info('$avatar: '. $avatar);
+        if (!$user) {
+            // User doesn't exist, create a new user
+            $user = new User();
+            $user->name = $name;
+            $user->email = $email;
+            $user->avatar = $avatar;
+            $user->password = 'FACEBOOK';
             $user->save();
         }
 

@@ -6,6 +6,8 @@ use App\Http\Controllers\PromptController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,13 +28,19 @@ Route::get('/midjourney/category/{slug}', [PromptController::class, 'searchByCat
 Route::post('/midjourney/category/{slug}/load-more', [PromptController::class, 'loadMorePromptsByCategory']);
 Route::get('/midjourney/', [PromptController::class, 'index']);
 Route::post('/midjourney/load-more', [PromptController::class, 'loadMorePrompts']);
-Route::get('/auth/google', [LoginController::class, 'redirectToGoogle'])->name('google.login');
-Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
 
+Route::middleware(['guest'])->group(function () {
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
+    Route::get('/auth/google', [LoginController::class, 'redirectToGoogle'])->name('google.login');
+    Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
+    Route::get('/auth/facebook', [LoginController::class, 'redirectToFacebook'])->name('facebook.login');
+    Route::get('/auth/facebook/callback', [LoginController::class, 'handleFacebookCallback']);
+});
 Route::middleware('auth')->group(function () {
     Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

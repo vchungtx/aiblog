@@ -91,7 +91,7 @@
         <a href="#"><i style="color: #0b0f28" class="fa fa-close"></i></a>
         <div class="col-6 col-offset-3">
             <h2 class="text-center">Login</h2>
-            <form action="{{ route('voyager.login')}}" method="POST">
+            <form action="{{ route('login')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="email">Email:</label>
@@ -106,11 +106,11 @@
             <div class="text-center">
                 <h4 style="margin-top: 10px">Or login with:</h4>
                 <div class="btn-group">
-                    <a href="{{ route('google.login') }}">
+                    <a href="{{ route('google.login') }}" style="margin-left: 10px; text-decoration: none">
                         <button class="btn btn-danger">Google</button>
                     </a>
+                    
 
-                    <button class="btn btn-primary" onclick="loginWithFacebook()">Facebook</button>
                 </div>
             </div>
         </div>

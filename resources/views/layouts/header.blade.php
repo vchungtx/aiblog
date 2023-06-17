@@ -106,7 +106,10 @@
             <div class="text-center">
                 <h4 style="margin-top: 10px">Or login with:</h4>
                 <div class="btn-group">
-                    <button class="btn btn-danger" onclick="loginWithGoogle()">Google</button>
+                    <a href="{{ route('google.login') }}">
+                        <button class="btn btn-danger">Google</button>
+                    </a>
+
                     <button class="btn btn-primary" onclick="loginWithFacebook()">Facebook</button>
                 </div>
             </div>

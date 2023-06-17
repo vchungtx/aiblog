@@ -1,6 +1,24 @@
 @extends('layouts.app')
-@section('content')
 
+@section('title')
+AIBlog | Trí tuệ nhân tạo| ChatGPT | Midjourney | D-ID | DALL-E
+@endsection
+
+@section('head')
+<meta name="title" content="AIBlog | Trí tuệ nhân tạo| ChatGPT | Midjourney | D-ID | DALL-E" />
+<meta name="revisit-after" content="1 days" />
+<meta name="robots" content="index,follow" />
+<meta property="fb:app_id" content="" />
+<meta property="og:site_name" content="AIBlog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{Request::url()}}" />
+<meta property="og:title" content="AIBlog | Trí tuệ nhân tạo| ChatGPT | Midjourney | D-ID | DALL-E" />
+<meta property="og:description" content="Tổng hợp những tin tức, kiến thức, và cách sử dụng các công cụ trí tuệ nhân tạo ChatGPT, Midjourney, D-ID, DALL-E ..." />
+<meta name="description" content="Tổng hợp những tin tức, kiến thức, và cách sử dụng các công cụ trí tuệ nhân tạo ChatGPT, Midjourney, D-ID, DALL-E ..." />
+<meta name="keywords" content="AI, artificial intelligence, aiblog, tri tue nhan tao, chatgpt, chat gpt, midjourney, mid journey, ai midjourney, chat openai, openai chat, chatgpt openai, ai online, chat gpt online, dalle, dall-e, did, d-id," />
+@endsection
+
+@section('content')
 <!-- section -->
 <div class="section">
     <!-- container -->
@@ -12,7 +30,7 @@
             <!-- post -->
             <div class="col-md-6">
                 <div class="post post-thumb">
-                    <a class="post-img" href="/ai-news/{{$featurePost->slug}}"><img src="@if( !filter_var($featurePost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $featurePost->image ) }}@else{{ $featurePost->image }}@endif" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
+                    <a class="post-img" href="/ai-news/{{$featurePost->slug}}"><img src="@if($featurePost->image == null) /img/default-ai.jpg @elseif( !filter_var($featurePost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $featurePost->image ) }}@else{{ $featurePost->image }}@endif" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
                     <div class="post-body">
                         <div class="post-meta">
                             @foreach ($featurePost->categories as $category)
@@ -37,7 +55,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title">
-                    <h2>Recent Posts</h2>
+                    <h2>Bài viết mới nhất</h2>
                 </div>
             </div>
             @foreach ($recentPosts as $recentPost)
@@ -45,7 +63,7 @@
             <!-- post -->
             <div class="col-md-4">
                 <div class="post">
-                    <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
+                    <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if($recentPost->image == null) /img/default-ai.jpg @elseif( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
                     <div class="post-body">
                         <div class="post-meta">
                             @foreach ($recentPost->categories as $category)
@@ -77,7 +95,7 @@
                     <!-- post -->
                     <div class="col-md-12">
                         <div class="post post-thumb">
-                            <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
+                            <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if($recentPost->image == null) /img/default-ai.jpg @elseif( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
                                     @foreach ($recentPost->categories as $category)
@@ -96,7 +114,7 @@
                     <!-- post -->
                     <div class="col-md-6">
                         <div class="post">
-                            <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
+                            <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if($recentPost->image == null) /img/default-ai.jpg @elseif( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
 
@@ -140,7 +158,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title text-center">
-                    <h2>Featured Posts</h2>
+                    <h2>Tiêu điểm</h2>
                 </div>
             </div>
             @foreach ($featurePosts as $featurePost)
@@ -148,7 +166,7 @@
             <!-- post -->
             <div class="col-md-4">
                 <div class="post">
-                    <a class="post-img" href="/ai-news/{{$featurePost->slug}}"><img src="@if( !filter_var($featurePost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $featurePost->image ) }}@else{{ $featurePost->image }}@endif" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
+                    <a class="post-img" href="/ai-news/{{$featurePost->slug}}"><img src="@if($featurePost->image == null) /img/default-ai.jpg @elseif( !filter_var($featurePost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $featurePost->image ) }}@else{{ $featurePost->image }}@endif" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
                     <div class="post-body">
                         <div class="post-meta">
                             @foreach ($featurePost->categories as $category)
@@ -183,14 +201,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-title">
-                            <h2>Most Read</h2>
+                            <h2>Được quan tâm</h2>
                         </div>
                     </div>
                     @foreach ($mostReadPosts as $mostReadPost)
                     <!-- post -->
                     <div class="col-md-12">
                         <div class="post post-row">
-                            <a class="post-img" href="/ai-news/{{$mostReadPost->slug}}"><img src="@if( !filter_var($mostReadPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $mostReadPost->image ) }}@else{{ $mostReadPost->image }}@endif" alt="{{$mostReadPost->title}}" title="{{$mostReadPost->title}}"></a>
+                            <a class="post-img" href="/ai-news/{{$mostReadPost->slug}}"><img src="@if($mostReadPost->image == null) /img/default-ai.jpg @elseif( !filter_var($mostReadPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $mostReadPost->image ) }}@else{{ $mostReadPost->image }}@endif" alt="{{$mostReadPost->title}}" title="{{$mostReadPost->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
                                     @foreach ($mostReadPost->categories as $category)

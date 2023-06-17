@@ -1,7 +1,7 @@
 <!-- catagories -->
 <div class="aside-widget">
     <div class="section-title">
-        <h2>Catagories</h2>
+        <h2>Danh mục</h2>
     </div>
     <div class="category-widget">
         <ul>

@@ -3,7 +3,7 @@
 <div class="col-md-12">
     <div class="post post-row">
         <a class="post-img" href="/ai-news/{{$post->slug}}"><img
-                src="@if( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif"
+                src="@if($post->image == null) /img/default-ai.jpg @elseif( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif"
                 alt="{{$post->title}}" title="{{$post->title}}"></a>
         <div class="post-body">
             <div class="post-meta">

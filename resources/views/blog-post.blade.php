@@ -1,12 +1,28 @@
 @extends('layouts.app')
-@section('head')
-<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.2.0/skins/ui/oxide/content.min.css"/>
-
+@section('title')
+{{$post->title}}
 @endsection
+
+@section('head')
+<meta name="title" content="{{$post->title}}" />
+<meta name="revisit-after" content="1 days" />
+<meta name="robots" content="index,follow" />
+<meta property="fb:app_id" content="" />
+<meta property="og:site_name" content="AIBlog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{Request::url()}}" />
+<meta property="og:title" content="{$post->title}}" />
+<meta property="og:description" content="{{$post->excerpt}}" />
+<meta name="description" content="{{$post->excerpt}}"" />
+<meta name="keywords" content="AI, artificial intelligence, aiblog, tri tue nhan tao, chatgpt, chat gpt, midjourney, mid journey, ai midjourney, chat openai, openai chat, chatgpt openai, ai online, chat gpt online, dalle, dall-e, did, d-id, {{Str::ascii($post->title)}}" />
+
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.2.0/skins/ui/oxide/content.min.css"/>
+@endsection
+
 @section('page-header')
 <!-- Page Header -->
 <div id="post-header" class="page-header">
-    <div class="background-img" style="background-image: url('@if( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif');"></div>
+    <div class="background-img" style="background-image: url('@if($post->image == null) /img/default-ai.jpg @elseif( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif');"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-10">
@@ -45,7 +61,7 @@
                     <div class="post-author">
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="@if( !filter_var($post->authorId->avatar, FILTER_VALIDATE_URL)){{ Voyager::image( $post->authorId->avatar ) }}@else{{ $post->authorId->avatar }}@endif" alt="">
+                                <img class="media-object" src="@if($post->image == null) /img/default-ai.jpg @elseif( !filter_var($post->authorId->avatar, FILTER_VALIDATE_URL)){{ Voyager::image( $post->authorId->avatar ) }}@else{{ $post->authorId->avatar }}@endif" alt="">
                             </div>
                             <div class="media-body">
                                 <div class="media-heading">

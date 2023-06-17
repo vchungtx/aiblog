@@ -1,4 +1,23 @@
 @extends('layouts.app')
+
+@section('title')
+Tổng hợp các Prompt và hình ảnh đẹp tạo bởi MidJourney mới nhất
+@endsection
+
+@section('head')
+<meta name="title" content="Tổng hợp các Prompt và hình ảnh đẹp tạo bởi MidJourney mới nhất" />
+<meta name="revisit-after" content="1 days" />
+<meta name="robots" content="index,follow" />
+<meta property="fb:app_id" content="" />
+<meta property="og:site_name" content="AIBlog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{Request::url()}}" />
+<meta property="og:title" content="Tổng hợp các Prompt và hình ảnh đẹp tạo bởi MidJourney mới nhất" />
+<meta property="og:description" content="Prompt Midjourney về các chủ đề nhân vật, cây cối, hoa quả..." />
+<meta name="description" content="Prompt Midjourney về các chủ đề nhân vật, cây cối, hoa quả..." />
+<meta name="keywords" content="AI, artificial intelligence, aiblog, tri tue nhan tao, chatgpt, chat gpt, midjourney mid journey, dalle, dall-e, did, d-id, prompt" />
+@endsection
+
 @section('page-header')
 <!-- Page Header -->
 <div class="page-header">
@@ -6,7 +25,7 @@
         <div class="row">
             <div class="col-md-10">
                 <ul class="page-header-breadcrumb">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/">Trang chủ</a></li>
                     <li><a href="/midjourney">MidJourney</a></li>
                     <li>{{$category->name}}</li>
                 </ul>
@@ -40,7 +59,7 @@
                         <div class="post">
 
                             <div class="post-img"><img class="prompt-image"
-                                    src="@if( !filter_var($prompt->image, FILTER_VALIDATE_URL)){{ Voyager::image( $prompt->image ) }}@else{{ $prompt->image }}@endif"
+                                    src="@if($prompt->image == null) /img/default-ai.jpg @elseif( !filter_var($prompt->image, FILTER_VALIDATE_URL)){{ Voyager::image( $prompt->image ) }}@else{{ $prompt->image }}@endif"
                                     alt="{{$prompt->content}}"></div>
                             <div class="post-body">
                                 <p class="prompt-title">{{$prompt->content}}</p>
@@ -53,7 +72,7 @@
                     <div class="col-md-6">
                         <div class="post">
                             <div class="post-img" ><img class="prompt-image"
-                                    src="@if( !filter_var($prompt->image, FILTER_VALIDATE_URL)){{ Voyager::image( $prompt->image ) }}@else{{ $prompt->image }}@endif"
+                                    src="@if($prompt->image == null) /img/default-ai.jpg @elseif( !filter_var($prompt->image, FILTER_VALIDATE_URL)){{ Voyager::image( $prompt->image ) }}@else{{ $prompt->image }}@endif"
                                     alt=""></div>
                             <div class="post-body">
                                 <p class="prompt-title">{{$prompt->content}}</p>
@@ -82,14 +101,14 @@
             </div>
 
             <div class="col-md-4">
-                @include('layouts.aside-ad')
-                @include('layouts.aside-ad')
-                @include('layouts.aside-ad')
-                @include('layouts.aside-ad')
-                @include('layouts.aside-ad')
-                @include('layouts.aside-ad')
-                @include('layouts.aside-ad')
                 @include('layouts.aside-prompt-category')
+                @include('layouts.aside-ad')
+                @include('layouts.aside-ad')
+                @include('layouts.aside-ad')
+                @include('layouts.aside-ad')
+                @include('layouts.aside-ad')
+                @include('layouts.aside-ad')
+                @include('layouts.aside-ad')
                 @include('layouts.aside-tag')
             </div>
         </div>

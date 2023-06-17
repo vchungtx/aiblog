@@ -1,16 +1,38 @@
 @extends('layouts.app')
+@section('title')
+Tin tức AI về {{Str::ascii($category->name)}}
+@endsection
+
+@section('head')
+<meta name="title" content="Tin tức AI về {{Str::ascii($category->name)}}" />
+<meta name="revisit-after" content="1 days" />
+<meta name="robots" content="index,follow" />
+<meta property="fb:app_id" content="" />
+<meta property="og:site_name" content="AIBlog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{Request::url()}}" />
+<meta property="og:title" content="Tin tức AI về {{Str::ascii($category->name)}}" />
+<meta property="og:description" content="Tin tức về trí tuệ nhân tạo trong lĩnh vực {{Str::ascii($category->name)}} mới nhất {{ date('Y') }}" />
+<meta name="description" content="Tin tức về trí tuệ nhân tạo trong lĩnh vực {{Str::ascii($category->name)}} mới nhất {{ date('Y') }}"" />
+<meta name="keywords" content="AI, artificial intelligence, aiblog, tri tue nhan tao, chatgpt, chat gpt, midjourney, mid journey, ai midjourney, dalle, dall-e, did, d-id, {{Str::ascii($category->name)}}" />
+@endsection
+
 @section('page-header')
 <!-- Page Header -->
-<div class="page-header">
+<div id="post-header" class="page-header">
+    <div class="background-img" style="background-image: url('@if($category->image == null) /img/default-ai.jpg @elseif( !filter_var($category->image, FILTER_VALIDATE_URL)){{ Voyager::image( $category->image ) }}@else{{ $category->image }}@endif');"></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <ul class="page-header-breadcrumb">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/">Trang chủ</a></li>
                     <li>{{$category->name}}</li>
                 </ul>
                 <h1>{{$category->name}}</h1>
+                <div class="page-header-content"> {!! $category->content !!} </div>
             </div>
+
+
         </div>
     </div>
 </div>
@@ -34,7 +56,7 @@
                         <div class="post post-thumb">
 
                             <a class="post-img" href="/ai-news/{{$post->slug}}"><img
-                                    src="@if( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif"
+                                    src="@if($post->image == null) /img/default-ai.jpg @elseif( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif"
                                     alt="{{$post->title}}" title="{{$post->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
@@ -52,7 +74,7 @@
                     <div class="col-md-6">
                         <div class="post">
                             <a class="post-img" href="/ai-news/{{$post->slug}}"><img
-                                    src="@if( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif"
+                                    src="@if($post->image == null) /img/default-ai.jpg @elseif( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif"
                                     alt="{{$post->title}}" title="{{$post->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
@@ -78,7 +100,7 @@
                     <div class="col-md-12">
                         <div class="post post-row">
                             <a class="post-img" href="/ai-news/{{$post->slug}}"><img
-                                    src="@if( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif"
+                                    src="@if($post->image == null) /img/default-ai.jpg @elseif( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif"
                                     alt="{{$post->title}}" title="{{$post->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">

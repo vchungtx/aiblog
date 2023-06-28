@@ -6,12 +6,14 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
     //
     public function index($slug)
     {
+        $slug = Str::replace('.html', '', $slug);
         Log::info('index ' . $slug);
         $post = Post::where('slug', $slug)->first();
         if ($post == null){

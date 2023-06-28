@@ -15,7 +15,7 @@ class HomeController extends Controller
         Log::info('start home');
         $categories = Category::all();
         $featurePosts = Post::published()->where('featured', 1)->orderBy('created_at', 'desc')->limit(3)->get();
-        $recentPosts = Post::published()->orderBy('created_at', 'desc')->limit(13)->get();
+        $recentPosts = Post::published()->noFeatured()->orderBy('created_at', 'desc')->limit(13)->get();
         $mostReadPosts = Post::published()->orderBy('read_count', 'desc')->limit(4)->get();
         Log::info('end home');
         return view('index')->with('featurePosts', $featurePosts)->with('recentPosts', $recentPosts)->with('mostReadPosts', $mostReadPosts)

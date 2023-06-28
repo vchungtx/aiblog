@@ -26,9 +26,10 @@ Tổng hợp các Prompt và hình ảnh đẹp tạo bởi MidJourney mới nh�
             <div class="col-md-10">
                 <ul class="page-header-breadcrumb">
                     <li><a href="/">Trang chủ</a></li>
-                    <li>MidJourney</li>
+                    <li><a href="/midjourney">MidJourney</a></li>
+                    <li>Prompt MidJourney</li>
                 </ul>
-                <h1>MidJourney</h1>
+                <h1>Prompt MidJourney</h1>
             </div>
         </div>
     </div>
@@ -137,7 +138,7 @@ Tổng hợp các Prompt và hình ảnh đẹp tạo bởi MidJourney mới nh�
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/midjourney/load-more', // Replace with the URL of your Laravel route for loading more posts
+                url: '/midjourney/prompt/load-more', // Replace with the URL of your Laravel route for loading more posts
                 method: 'POST',
                 data: {
                     page: page,

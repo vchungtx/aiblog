@@ -28,7 +28,7 @@
             <div class="col-md-10">
                 <div class="post-meta">
                     @foreach ($post->categories as $category)
-                    <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                    <a class="post-category" style="background-color: {{$category->color}}" href="/{{$category->slug}}">{{$category->name}}</a>
                     @endforeach
                     <span class="post-date">{{ date('d/m/Y', strtotime($post->created_at))}} </span>
                 </div>

@@ -20,7 +20,7 @@ class PromptController extends Controller
         $categories = PromptCategory::all();
 
         return view('prompt-category')->with('prompts', $prompts)->with('category', $category)
-            ->with('categories', $categories);
+            ->with('promptCategories', $categories);
     }
 
     public function loadMorePromptsByCategory($slug, Request $request)
@@ -41,7 +41,7 @@ class PromptController extends Controller
         $prompts = Prompt::orderBy('created_at', 'desc')->limit(19)->get();
         $categories = PromptCategory::all();
         return view('prompt')->with('prompts', $prompts)
-            ->with('categories', $categories);
+            ->with('promptCategories', $categories);
     }
 
     public function loadMorePrompts(Request $request)

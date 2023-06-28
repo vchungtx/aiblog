@@ -1106,16 +1106,15 @@ RESPONSIVE
 		 font-size: 28px;
 	}
      .post.post-row .post-img {
-         width: 100%;
-         float: none;
+         width: 50%;
+         float: right;
     }
+
      .post.post-row .post-body {
          margin-left: 0px;
     }
      .post.post-row .post-meta {
          margin-top: 15px;
     }
-     .post.post-row .post-body p {
-         display:none;
-    }
+
 }

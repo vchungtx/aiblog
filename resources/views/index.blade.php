@@ -30,17 +30,17 @@ AIBlog | Trí tuệ nhân tạo| ChatGPT | Midjourney | D-ID | DALL-E
             <!-- post -->
             <div class="col-md-6">
                 <div class="post post-thumb">
-                    <a class="post-img" href="/ai-news/{{$featurePost->slug}}"><img src="@if($featurePost->image == null) /img/default-ai.jpg @elseif( !filter_var($featurePost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $featurePost->image ) }}@else{{ $featurePost->image }}@endif" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
+                    <a class="post-img" href="/{{$featurePost->slug}}.html"><img src="@if($featurePost->image == null) /img/default-ai.jpg @elseif( !filter_var($featurePost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $featurePost->image ) }}@else{{ $featurePost->image }}@endif" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
                     <div class="post-body">
                         <div class="post-meta">
                             @foreach ($featurePost->categories as $category)
                             @if($loop->index < 3)
-                            <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                            <a class="post-category" style="background-color: {{$category->color}}" href="/{{$category->slug}}">{{$category->name}}</a>
                             @endif
                             @endforeach
                             <span class="post-date">{{ date('d/m/Y', strtotime($featurePost->created_at))}} </span>
                         </div>
-                        <h3 class="post-title"><a href="/ai-news/{{$featurePost->slug}}">{{$featurePost->title}}</a></h3>
+                        <h3 class="post-title"><a href="/{{$featurePost->slug}}.html">{{$featurePost->title}}</a></h3>
                     </div>
                 </div>
             </div>
@@ -63,17 +63,17 @@ AIBlog | Trí tuệ nhân tạo| ChatGPT | Midjourney | D-ID | DALL-E
             <!-- post -->
             <div class="col-md-4">
                 <div class="post">
-                    <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if($recentPost->image == null) /img/default-ai.jpg @elseif( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
+                    <a class="post-img" href="/{{$recentPost->slug}}.html"><img src="@if($recentPost->image == null) /img/default-ai.jpg @elseif( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
                     <div class="post-body">
                         <div class="post-meta">
                             @foreach ($recentPost->categories as $category)
                             @if($loop->index < 3)
-                            <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                            <a class="post-category" style="background-color: {{$category->color}}" href="/{{$category->slug}}">{{$category->name}}</a>
                             @endif
                             @endforeach
                             <span class="post-date">{{ date('d/m/Y', strtotime($recentPost->created_at))}}</span>
                         </div>
-                        <h3 class="post-title"><a href="/ai-news/{{$recentPost->slug}}">{{$recentPost->title}}</a></h3>
+                        <h3 class="post-title"><a href="/{{$recentPost->slug}}.html">{{$recentPost->title}}</a></h3>
                     </div>
                 </div>
             </div>
@@ -95,17 +95,17 @@ AIBlog | Trí tuệ nhân tạo| ChatGPT | Midjourney | D-ID | DALL-E
                     <!-- post -->
                     <div class="col-md-12">
                         <div class="post post-thumb">
-                            <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if($recentPost->image == null) /img/default-ai.jpg @elseif( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
+                            <a class="post-img" href="/{{$recentPost->slug}}.html"><img src="@if($recentPost->image == null) /img/default-ai.jpg @elseif( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
                                     @foreach ($recentPost->categories as $category)
                                     @if($loop->index < 3)
-                                    <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                                    <a class="post-category" style="background-color: {{$category->color}}" href="/{{$category->slug}}">{{$category->name}}</a>
                                     @endif
                                     @endforeach
                                     <span class="post-date">{{ date('d/m/Y', strtotime($recentPost->created_at))}} </span>
                                 </div>
-                                <h3 class="post-title"><a href="/ai-news/{{$recentPost->slug}}">{{$recentPost->title}}</a></h3>
+                                <h3 class="post-title"><a href="/{{$recentPost->slug}}.html">{{$recentPost->title}}</a></h3>
                             </div>
                         </div>
                     </div>
@@ -114,18 +114,18 @@ AIBlog | Trí tuệ nhân tạo| ChatGPT | Midjourney | D-ID | DALL-E
                     <!-- post -->
                     <div class="col-md-6">
                         <div class="post">
-                            <a class="post-img" href="/ai-news/{{$recentPost->slug}}"><img src="@if($recentPost->image == null) /img/default-ai.jpg @elseif( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
+                            <a class="post-img" href="/{{$recentPost->slug}}.html"><img src="@if($recentPost->image == null) /img/default-ai.jpg @elseif( !filter_var($recentPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $recentPost->image ) }}@else{{ $recentPost->image }}@endif" alt="{{$recentPost->title}}" title="{{$recentPost->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
 
                                     @foreach ($recentPost->categories as $category)
                                     @if($loop->index < 3)
-                                    <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                                    <a class="post-category" style="background-color: {{$category->color}}" href="/{{$category->slug}}">{{$category->name}}</a>
                                     @endif
                                     @endforeach
                                     <span class="post-date">{{ date('d/m/Y', strtotime($recentPost->created_at))}}  </span>
                                 </div>
-                                <h3 class="post-title"><a href="/ai-news/{{$recentPost->slug}}">{{$recentPost->title}}</a></h3>
+                                <h3 class="post-title"><a href="/{{$recentPost->slug}}.html">{{$recentPost->title}}</a></h3>
                             </div>
                         </div>
                     </div>
@@ -166,17 +166,17 @@ AIBlog | Trí tuệ nhân tạo| ChatGPT | Midjourney | D-ID | DALL-E
             <!-- post -->
             <div class="col-md-4">
                 <div class="post">
-                    <a class="post-img" href="/ai-news/{{$featurePost->slug}}"><img src="@if($featurePost->image == null) /img/default-ai.jpg @elseif( !filter_var($featurePost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $featurePost->image ) }}@else{{ $featurePost->image }}@endif" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
+                    <a class="post-img" href="/{{$featurePost->slug}}.html"><img src="@if($featurePost->image == null) /img/default-ai.jpg @elseif( !filter_var($featurePost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $featurePost->image ) }}@else{{ $featurePost->image }}@endif" alt="{{$featurePost->title}}" title="{{$featurePost->title}}"></a>
                     <div class="post-body">
                         <div class="post-meta">
                             @foreach ($featurePost->categories as $category)
                             @if($loop->index < 3)
-                            <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                            <a class="post-category" style="background-color: {{$category->color}}" href="/{{$category->slug}}">{{$category->name}}</a>
                             @endif
                             @endforeach
                             <span class="post-date">{{ date('d/m/Y', strtotime($featurePost->created_at))}} </span>
                         </div>
-                        <h3 class="post-title"><a href="/ai-news/{{$featurePost->slug}}">{{$featurePost->title}}</a></h3>
+                        <h3 class="post-title"><a href="/{{$featurePost->slug}}.html">{{$featurePost->title}}</a></h3>
                     </div>
                 </div>
             </div>
@@ -208,17 +208,17 @@ AIBlog | Trí tuệ nhân tạo| ChatGPT | Midjourney | D-ID | DALL-E
                     <!-- post -->
                     <div class="col-md-12">
                         <div class="post post-row">
-                            <a class="post-img" href="/ai-news/{{$mostReadPost->slug}}"><img src="@if($mostReadPost->image == null) /img/default-ai.jpg @elseif( !filter_var($mostReadPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $mostReadPost->image ) }}@else{{ $mostReadPost->image }}@endif" alt="{{$mostReadPost->title}}" title="{{$mostReadPost->title}}"></a>
+                            <a class="post-img" href="/{{$mostReadPost->slug}}.html"><img src="@if($mostReadPost->image == null) /img/default-ai.jpg @elseif( !filter_var($mostReadPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $mostReadPost->image ) }}@else{{ $mostReadPost->image }}@endif" alt="{{$mostReadPost->title}}" title="{{$mostReadPost->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
                                     @foreach ($mostReadPost->categories as $category)
                                     @if($loop->index < 3)
-                                    <a class="post-category" style="background-color: {{$category->color}}" href="/ai-news/category/{{$category->slug}}">{{$category->name}}</a>
+                                    <a class="post-category" style="background-color: {{$category->color}}" href="/{{$category->slug}}">{{$category->name}}</a>
                                     @endif
                                     @endforeach
                                     <span class="post-date">{{ date('d/m/Y', strtotime($mostReadPost->created_at))}} </span>
                                 </div>
-                                <h3 class="post-title"><a href="/ai-news/{{$mostReadPost->slug}}">{{$mostReadPost->title}}</a></h3>
+                                <h3 class="post-title"><a href="/{{$mostReadPost->slug}}.html">{{$mostReadPost->title}}</a></h3>
                                 <p>{{$mostReadPost->excerpt}}</p>
                             </div>
                         </div>

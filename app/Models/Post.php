@@ -48,6 +48,11 @@ class Post extends Model
         return $query->where('status', '=', static::PUBLISHED);
     }
 
+    public function scopeNoFeatured(Builder $query)
+    {
+        return $query->where('featured', '!=', 1);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */

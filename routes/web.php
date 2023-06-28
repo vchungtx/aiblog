@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MidjourneyController;
 use App\Http\Controllers\PromptController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -19,15 +20,21 @@ use App\Http\Controllers\PostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+Route::get('/midjourney/', [MidjourneyController::class, 'index']);
+Route::get('/midjourney/category/{slug}', [PromptController::class, 'searchByCategory']);
+Route::get('/midjourney/prompt', [PromptController::class, 'index']);
+Route::get('/midjourney/posts', [MidjourneyController::class, 'posts']);
+Route::post('/midjourney/category/{slug}/load-more', [PromptController::class, 'loadMorePromptsByCategory']);
+Route::post('/midjourney/prompt/load-more', [PromptController::class, 'loadMorePrompts']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/ai-news/{slug}', [PostController::class, 'index']);
-Route::get('/ai-news/category/{slug}', [PostController::class, 'searchByCategory']);
-Route::post('/ai-news/category/{slug}/load-more', [PostController::class, 'loadMorePostsByCategory']);
-Route::get('/midjourney/category/{slug}', [PromptController::class, 'searchByCategory']);
-Route::post('/midjourney/category/{slug}/load-more', [PromptController::class, 'loadMorePromptsByCategory']);
-Route::get('/midjourney/', [PromptController::class, 'index']);
-Route::post('/midjourney/load-more', [PromptController::class, 'loadMorePrompts']);
+Route::get('/{slug}.html', [PostController::class, 'index']);
+Route::get('/{slug}', [PostController::class, 'searchByCategory']);
+Route::post('/{slug}/load-more', [PostController::class, 'loadMorePostsByCategory']);
+
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');
@@ -39,6 +46,4 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
+

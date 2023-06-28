@@ -6,7 +6,7 @@
     <div class="category-widget">
         <ul>
             @foreach ($categories as $category)
-            <li><a href="/ai-news/category/{{$category->slug}}">{{$category->name}}<span style="background-color: {{$category->color}}">{{count($category->posts)}}</span></a></li>
+            <li><a href="/{{$category->slug}}">{{$category->name}}<span style="background-color: {{$category->color}}">{{count($category->posts)}}</span></a></li>
             @endforeach
 
         </ul>

@@ -1,38 +1,35 @@
 @extends('layouts.app')
 @section('title')
-Tin tức AI về {{Str::ascii($category->name)}}
+Hướng dẫn sử dụng Midjourney
 @endsection
 
 @section('head')
-<meta name="title" content="Tin tức AI về {{Str::ascii($category->name)}}" />
+<meta name="title" content="Hướng dẫn sử dụng Midjourney" />
 <meta name="revisit-after" content="1 days" />
 <meta name="robots" content="index,follow" />
 <meta property="fb:app_id" content="" />
 <meta property="og:site_name" content="AIBlog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{Request::url()}}" />
-<meta property="og:title" content="Tin tức AI về {{Str::ascii($category->name)}}" />
-<meta property="og:description" content="Tin tức về trí tuệ nhân tạo trong lĩnh vực {{Str::ascii($category->name)}} mới nhất {{ date('Y') }}" />
-<meta name="description" content="Tin tức về trí tuệ nhân tạo trong lĩnh vực {{Str::ascii($category->name)}} mới nhất {{ date('Y') }}"" />
-<meta name="keywords" content="AI, artificial intelligence, aiblog, tri tue nhan tao, chatgpt, chat gpt, midjourney, mid journey, ai midjourney, dalle, dall-e, did, d-id, {{Str::ascii($category->name)}}" />
+<meta property="og:title" content="Hướng dẫn sử dụng Midjourney" />
+<meta property="og:description" content="Hướng dẫn sử dụng Midjourney mới nhất {{ date('Y') }}" />
+<meta name="description" content="Hướng dẫn sử dụng Midjourney mới nhất {{ date('Y') }}"" />
+<meta name="keywords" content="AI, artificial intelligence, aiblog, tri tue nhan tao, chatgpt, chat gpt, midjourney, mid journey, ai midjourney, dalle, dall-e, did, d-id" />
 @endsection
 
 @section('page-header')
 <!-- Page Header -->
-<div id="post-header" class="page-header">
-    <div class="background-img" style="background-image: url('@if($category->image == null) /img/default-ai.jpg @elseif( !filter_var($category->image, FILTER_VALIDATE_URL)){{ Voyager::image( $category->image ) }}@else{{ $category->image }}@endif');"></div>
+<div class="page-header">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <ul class="page-header-breadcrumb">
                     <li><a href="/">Trang chủ</a></li>
-                    <li>{{$category->name}}</li>
+                    <li><a href="/midjourney">MidJourney</a></li>
+                    <li>Sử dụng MidJourney </li>
                 </ul>
-                <h1>{{$category->name}}</h1>
-                <div class="page-header-content"> {!! $category->content !!} </div>
+                <h1>Sử dụng MidJourney</h1>
             </div>
-
-
         </div>
     </div>
 </div>
@@ -60,8 +57,11 @@ Tin tức AI về {{Str::ascii($category->name)}}
                                     alt="{{$post->title}}" title="{{$post->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
-                                    <a class="post-category" style="background-color: {{$category->color}}"
-                                       href="/{{$category->slug}}">{{$category->name}}</a>
+                                    @foreach ($post->categories as $category)
+                                    @if($loop->index < 3)
+                                    <a class="post-category" style="background-color: {{$category->color}}" href="/{{$category->slug}}">{{$category->name}}</a>
+                                    @endif
+                                    @endforeach
                                     <span class="post-date">{{ date('d/m/Y', strtotime($post->created_at))}} </span>
                                 </div>
                                 <h3 class="post-title"><a href="/{{$post->slug}}.html">{{$post->title}}</a></h3>
@@ -78,8 +78,11 @@ Tin tức AI về {{Str::ascii($category->name)}}
                                     alt="{{$post->title}}" title="{{$post->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
-                                    <a class="post-category" style="background-color: {{$category->color}}"
-                                       href="/{{$category->slug}}">{{$category->name}}</a>
+                                    @foreach ($post->categories as $category)
+                                    @if($loop->index < 3)
+                                    <a class="post-category" style="background-color: {{$category->color}}" href="/{{$category->slug}}">{{$category->name}}</a>
+                                    @endif
+                                    @endforeach
                                     <span class="post-date">{{ date('d/m/Y', strtotime($post->created_at))}} </span>
                                 </div>
                                 <h3 class="post-title"><a href="/{{$post->slug}}.html">{{$post->title}}</a></h3>
@@ -104,8 +107,11 @@ Tin tức AI về {{Str::ascii($category->name)}}
                                     alt="{{$post->title}}" title="{{$post->title}}"></a>
                             <div class="post-body">
                                 <div class="post-meta">
-                                    <a class="post-category" style="background-color: {{$category->color}}"
-                                       href="/{{$category->slug}}">{{$category->name}}</a>
+                                    @foreach ($post->categories as $category)
+                                    @if($loop->index < 3)
+                                    <a class="post-category" style="background-color: {{$category->color}}" href="/{{$category->slug}}">{{$category->name}}</a>
+                                    @endif
+                                    @endforeach
                                     <span class="post-date">{{ date('d/m/Y', strtotime($post->created_at))}} </span>
                                 </div>
                                 <h3 class="post-title"><a href="/{{$post->slug}}.html">{{$post->title}}</a></h3>
@@ -129,7 +135,6 @@ Tin tức AI về {{Str::ascii($category->name)}}
 
             <div class="col-md-4">
                 @include('layouts.aside-ad')
-                @include('layouts.aside-most-read')
                 @include('layouts.aside-category')
                 @include('layouts.aside-tag')
             </div>

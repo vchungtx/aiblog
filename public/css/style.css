@@ -648,9 +648,10 @@ RESPONSIVE
  .post.post-row .post-img {
      width: 40%;
      float: left;
+     margin-right: 10px;
 }
- .post.post-row .post-body {
-     margin-left: calc(40% + 30px);
+ .post.post-row .post-body p{
+     margin-left: calc(40% + 10px);
 }
  .post.post-row .post-meta {
      margin-top: 0px;
@@ -1106,7 +1107,7 @@ RESPONSIVE
 		 font-size: 28px;
 	}
      .post.post-row .post-img {
-         width: 50%;
+         width: 30%;
          float: right;
     }
 
@@ -1114,7 +1115,11 @@ RESPONSIVE
          margin-left: 0px;
     }
      .post.post-row .post-meta {
-         margin-top: 15px;
+         /*margin-top: 15px;*/
+         display:none;
     }
+     .post.post-row .post-body p{
+         margin-left: 0px;
+     }
 
 }

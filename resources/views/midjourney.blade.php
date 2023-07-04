@@ -82,8 +82,9 @@ Tổng hợp các Prompt và hình ảnh đẹp tạo bởi MidJourney mới nh�
                 <!-- post -->
                 <div class="col-md-12">
                     <div class="post post-row">
-                        <a class="post-img" href="/{{$post->slug}}.html"><img src="@if($post->image == null) /img/default-ai.jpg @elseif( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif" alt="{{$post->title}}" title="{{$post->title}}"></a>
+
                         <div class="post-body">
+                            <a class="post-img" href="/{{$post->slug}}.html"><img src="@if($post->image == null) /img/default-ai.jpg @elseif( !filter_var($post->image, FILTER_VALIDATE_URL)){{ Voyager::image( $post->image ) }}@else{{ $post->image }}@endif" alt="{{$post->title}}" title="{{$post->title}}"></a>
                             <div class="post-meta">
                                 @foreach ($post->categories as $category)
                                 @if($loop->index < 3)

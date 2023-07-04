@@ -208,8 +208,9 @@ AIBlog | Trí tuệ nhân tạo| ChatGPT | Midjourney | D-ID | DALL-E
                     <!-- post -->
                     <div class="col-md-12">
                         <div class="post post-row">
-                            <a class="post-img" href="/{{$mostReadPost->slug}}.html"><img src="@if($mostReadPost->image == null) /img/default-ai.jpg @elseif( !filter_var($mostReadPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $mostReadPost->image ) }}@else{{ $mostReadPost->image }}@endif" alt="{{$mostReadPost->title}}" title="{{$mostReadPost->title}}"></a>
+
                             <div class="post-body">
+                                <a class="post-img" href="/{{$mostReadPost->slug}}.html"><img src="@if($mostReadPost->image == null) /img/default-ai.jpg @elseif( !filter_var($mostReadPost->image, FILTER_VALIDATE_URL)){{ Voyager::image( $mostReadPost->image ) }}@else{{ $mostReadPost->image }}@endif" alt="{{$mostReadPost->title}}" title="{{$mostReadPost->title}}"></a>
                                 <div class="post-meta">
                                     @foreach ($mostReadPost->categories as $category)
                                     @if($loop->index < 3)

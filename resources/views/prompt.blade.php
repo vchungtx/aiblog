@@ -81,11 +81,8 @@ Tổng hợp các Prompt và hình ảnh đẹp tạo bởi MidJourney mới nh�
                     </div>
                     <!-- /post -->
 
-                    @if ($loop->index == 2)
+                    @if (($loop->index) % 2 == 0)
                     <div class="clearfix visible-md visible-lg"></div>
-                    <!-- ad -->
-                    @include('layouts.center-ad')
-                    <!-- ad -->
                     @endif
                     @endif
                     @endforeach

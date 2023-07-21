@@ -109,7 +109,7 @@ Tổng hợp các Prompt và hình ảnh đẹp tạo bởi MidJourney mới nh�
                 @include('layouts.aside-ad')
                 @include('layouts.aside-ad')
                 @include('layouts.aside-ad')
-                @include('layouts.aside-tag')
+
             </div>
         </div>
         <!-- /row -->

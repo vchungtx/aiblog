@@ -83,7 +83,7 @@
 
                 <div class="section-row">
                     <div class="section-title">
-                        <h2>Leave a comment</h2>
+                        <h2>Gửi comment</h2>
                     </div>
                     <form class="post-reply" action="{{ route('comments.store') }}" method="POST">
                         @csrf
@@ -91,9 +91,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea class="input" name="content" placeholder="Message"></textarea>
+                                    <textarea class="input" name="content" placeholder="Nội dung"></textarea>
                                 </div>
-                                <button class="primary-button" type="submit">Submit</button>
+                                <button class="primary-button" type="submit">Gửi</button>
                             </div>
                         </div>
                     </form>
@@ -128,7 +128,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea class="input" name="content" placeholder="Message"></textarea>
+                                                <textarea class="input" name="content" placeholder="Nội dung"></textarea>
                                             </div>
                                             <button class="primary-button" type="submit">Submit a reply</button>
                                         </div>
@@ -189,6 +189,15 @@
             var commentId = $(this).attr('comment-id');
             $('#reply-box-' + commentId).toggle();
             return false;
+        });
+        $('.input').click(function() {
+        @auth
+        // If logged in, do nothing or perform desired action
+        @else
+            // If not logged in, show the login form
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            $('.login-area').show();
+        @endauth
         });
     });
 </script>

@@ -232,7 +232,7 @@ AIBlog | Trí tuệ nhân tạo| ChatGPT | Midjourney | D-ID | DALL-E
 
 <!--                    <div class="col-md-12">-->
 <!--                        <div class="section-row">-->
-<!--                            <button class="primary-button center-block">Load More</button>-->
+<!--                            <button class="primary-button center-block">Tiếp theo</button>-->
 <!--                        </div>-->
 <!--                    </div>-->
                 </div>

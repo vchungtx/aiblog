@@ -94,7 +94,7 @@ Tổng hợp các Prompt và hình ảnh đẹp tạo bởi MidJourney mới nh�
                 @if(count($prompts) >= 19)
                 <div class="col-md-12">
                     <div class="section-row">
-                        <button id="load-more-btn" class="primary-button center-block">Load More</button>
+                        <button id="load-more-btn" class="primary-button center-block">Tiếp theo</button>
                     </div>
                 </div>
                 @endif

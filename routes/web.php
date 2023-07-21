@@ -32,7 +32,11 @@ Route::post('/midjourney/prompt/load-more', [PromptController::class, 'loadMoreP
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/{slug}.html', [PostController::class, 'index']);
-Route::get('/{slug}', [PostController::class, 'searchByCategory']);
+Route::get('/archive/{slug}', [PostController::class, 'searchByMonth']);
+Route::post('/archive/{slug}/load-more', [PostController::class, 'loadMorePostsByMonth']);
+Route::get('/tag/{slug}', [PostController::class, 'searchByTag']);
+Route::post('/tag/{slug}/load-more', [PostController::class, 'loadMorePostsByTag']);
+Route::get('/{slug}', [PostController::class, 'searchByCategory'])->where('slug', '^((?!\.+).)*$');
 Route::post('/{slug}/load-more', [PostController::class, 'loadMorePostsByCategory']);
 
 

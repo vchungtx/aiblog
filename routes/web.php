@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MidjourneyController;
 use App\Http\Controllers\PromptController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -23,6 +24,10 @@ use App\Http\Controllers\PostController;
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/sitemaps.xml', [SitemapController::class, 'index']);
+Route::get('/sitemap/{slug}.xml', [SitemapController::class, 'getPostByMonth']);
+Route::get('/sitemap-menu.xml', [SitemapController::class, 'menu']);
 Route::get('/midjourney/', [MidjourneyController::class, 'index']);
 Route::get('/midjourney/category/{slug}', [PromptController::class, 'searchByCategory']);
 Route::get('/midjourney/prompt', [PromptController::class, 'index']);

@@ -4,17 +4,17 @@
 @endsection
 
 @section('head')
-<meta name="title" content="{{$post->title}}" />
+<meta name="title" content="{{$post->seo_title ?: $post->title}}" />
 <meta name="revisit-after" content="1 days" />
 <meta name="robots" content="index,follow" />
 <meta property="fb:app_id" content="" />
 <meta property="og:site_name" content="AIBlog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{Request::url()}}" />
-<meta property="og:title" content="{$post->title}}" />
+<meta property="og:title" content="{{$post->title}}" />
 <meta property="og:description" content="{{$post->excerpt}}" />
-<meta name="description" content="{{$post->excerpt}}"" />
-<meta name="keywords" content="AI, artificial intelligence, aiblog, tri tue nhan tao, chatgpt, chat gpt, midjourney, mid journey, ai midjourney, chat openai, openai chat, chatgpt openai, ai online, chat gpt online, dalle, dall-e, did, d-id, {{Str::ascii($post->title)}}" />
+<meta name="description" content="{{$post->meta_description ?: $post->excerpt}}"" />
+<meta name="keywords" content="{{$post->meta_keywords ?: 'AI, artificial intelligence, aiblog, tri tue nhan tao, chatgpt, chat gpt, midjourney, mid journey, ai midjourney, chat openai, openai chat, chatgpt openai, ai online, chat gpt online, dalle, dall-e, did, d-id,' . Str::ascii($post->title)}}" />
 
 <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.2.0/skins/ui/oxide/content.min.css"/>
 @endsection

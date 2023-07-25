@@ -51,18 +51,16 @@ class LoginController extends Controller
         $userInfo = $oauth2->userinfo->get();
 
         $email = $userInfo->getEmail();
-        $firstName = $userInfo->getGivenName();
-        $lastName = $userInfo->getFamilyName();
+        $name = $userInfo->getName();
         $pictureUrl = $userInfo->getPicture();
         $user = User::where('email', $email)->first();
-        Log::info('$firstName: '. $firstName);
-        Log::info('$lastName: '. $lastName);
+        Log::info('$name: '. $name);
         Log::info('$email: '. $email);
         Log::info('$pictureUrl: '. $pictureUrl);
         if (!$user) {
             // User doesn't exist, create a new user
             $user = new User();
-            $user->name = $firstName . ' ' . $lastName;
+            $user->name = $name;
             $user->email = $email;
             $user->avatar = $pictureUrl;
             $user->password = 'GOOGLE';
@@ -74,6 +72,47 @@ class LoginController extends Controller
 
         // Redirect the user to the desired page
         return redirect()->route('home');
+
+    }
+
+    public function handleGoogleLogin(Request $request)
+    {
+        $googleClient = new GoogleClient();
+        $googleClient->setClientId(config('services.google.client_id'));
+
+        $token = $request->input('id_token');
+        Log::info('token:'. $token);
+        // Use the obtained token to retrieve user details and authenticate the user in your Laravel application
+        $payload = $googleClient->verifyIdToken($token);
+        if ($payload) {
+            Log::info('$payload:'. json_encode($payload));
+            // Token is valid, user is authenticated
+            // You can access user information from $payload
+            $user_id = $payload['sub'];
+            $email = $payload['email'];
+            $name = $payload['name'];
+            $pictureUrl = $payload['picture'];
+            $user = User::where('email', $email)->first();
+            if (!$user) {
+                // User doesn't exist, create a new user
+                $user = new User();
+                $user->name = $name;
+                $user->email = $email;
+                $user->avatar = $pictureUrl;
+                $user->password = 'GOOGLE';
+                $user->save();
+            }
+
+            // Authenticate the user
+            Auth::login($user);
+
+
+            // Return a success response to the client
+            return response()->json(['message' => 'Login successful', 'user_id' => $user_id, 'email' => $email, 'name' => $name]);
+        } else {
+            // Invalid token
+            return response()->json(['error' => 'Invalid token'], 401);
+        }
 
     }
 

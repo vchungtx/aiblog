@@ -49,6 +49,7 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::get('/auth/google', [LoginController::class, 'redirectToGoogle'])->name('google.login');
     Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
+    Route::post('/auth/google/login', [LoginController::class, 'handleGoogleLogin']);
 });
 Route::middleware('auth')->group(function () {
     Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');

@@ -28,7 +28,7 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
     </head>
 	<body>
 
@@ -37,10 +37,41 @@
     @yield('content')
 
     @include('layouts.footer')
+    @guest
+    <div id="g_id_onload"
+         data-client_id="475480300002-l2candjrbfg1d8bm412nlj7v7s8dhskm.apps.googleusercontent.com"
+         data-callback="onSignIn"
+         data-login_uri="/login-google"
+         data-cancel_on_tap_outside="true"
+    ></div>
+    @endguest
 		<!-- jQuery Plugins -->
 		<script src="/js/jquery.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/main.js"></script>
+    <script>
+        // Define the callback function when the user signs in
+        function onSignIn(googleUser) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                }
+            });
+            // You can handle the signed-in user data here or send it to your server for further processing
+            console.log(googleUser);
+            $.post('/auth/google/login', {
+                id_token: googleUser.credential,
+                // Add any other relevant data from the profile if needed
+            }, function(response) {
+                // Process the response from the server
+                console.log(response); // Log the response for demonstration purposes
+                window.location.reload();
+            }).fail(function(error) {
+                // Handle any errors that occur during the request
+                console.error('Error:', error);
+            });
+        }
+    </script>
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";

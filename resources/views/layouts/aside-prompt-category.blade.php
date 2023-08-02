@@ -6,7 +6,8 @@
     <div class="category-widget">
         <ul>
             @foreach ($promptCategories as $category)
-            <li><a href="/midjourney/category/{{$category->slug}}">{{$category->name}}<span style="background-color: {{$category->color}}">{{count($category->prompts)}}</span></a></li>
+<!--            <li><a href="/midjourney/category/{{$category->slug}}">{{$category->name}}<span style="background-color: {{$category->color}}">{{count($category->prompts)}}</span></a></li>-->
+            <li><a href="/midjourney/category/{{$category->slug}}">{{$category->name}}</a></li>
             @endforeach
 
         </ul>
